@@ -87,8 +87,11 @@ input.addEventListener("change", () => {
         return;
     }
 
-    connection.send({name: name, text: text});
-
     input.value = "";
+
+    if (connection) {
+        connection.send({ name, text });
+    }
+
     createMessage(`<${name}> ${text}`);
 });
