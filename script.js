@@ -90,7 +90,7 @@ input.addEventListener("change", () => {
     input.value = "";
 
     if (connection) {
-        connection.send({ name, text });
+        connection.send({name: name, text: text});
     }
 
     createMessage(`<${name}> ${text}`);
