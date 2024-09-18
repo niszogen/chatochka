@@ -32,8 +32,6 @@ const peer = new Peer(`chatichka-${id}`, {
     config: {
         iceServers: [
             { urls: "stun:stun.relay.metered.ca:80" },
-            { urls: "turn:global.relay.metered.ca:80", username: "99970a8195f9abaac29787b8", credential: "Wh0+MvctX+HfCjsr" },
-            { urls: "turn:global.relay.metered.ca:80?transport=tcp", username: "99970a8195f9abaac29787b8", credential: "Wh0+MvctX+HfCjsr" },
             { urls: "turn:global.relay.metered.ca:443", username: "99970a8195f9abaac29787b8", credential: "Wh0+MvctX+HfCjsr" },
             { urls: "turns:global.relay.metered.ca:443?transport=tcp", username: "99970a8195f9abaac29787b8", credential: "Wh0+MvctX+HfCjsr" }
         ]
@@ -53,10 +51,10 @@ function onConnectionData(data) {
 }
 
 function onConnectionClose() {
+    createMessage(`A peer (ID: ${connectionID}) disconnected from the chat`, "system");
+
     connection = null;
     connectionID = "";
-
-    createMessage(`A peer (ID: ${connectionID}) disconnected from the chat`, "system");    
 }
 
 // other event handlers
@@ -75,7 +73,7 @@ peer.on("connection", (incoming) => {
     connection.on("data", onConnectionData);
     connection.on("close", onConnectionClose);
 
-    createMessage(`A peer (ID: ${connectionID}) connected to the chat`, "system");    
+    createMessage(`A peer (ID: ${connectionID}) connected to the chat`, "system");
 });
 
 button.addEventListener("click", () => {
