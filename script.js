@@ -28,7 +28,7 @@ const input = document.getElementById("messages-input");
 const id = randomID();
 const name = prompt("Enter your name:") || "Guest";
 
-const peer = new Peer(`chatichka-${id}`, {
+const peer = new Peer(`chatochka-${id}`, {
     config: {
         iceServers: [
             { urls: "stun:stun.relay.metered.ca:80" },
@@ -59,7 +59,7 @@ function onConnectionClose() {
 
 // other event handlers
 peer.on("connection", (incoming) => {
-    if (!incoming.peer.startsWith("chatichka-")) {
+    if (!incoming.peer.startsWith("chatochka-")) {
         return;
     }
 
@@ -83,7 +83,7 @@ button.addEventListener("click", () => {
         connection.close();
     }
 
-    connection = peer.connect(`chatichka-${connectionID}`);
+    connection = peer.connect(`chatochka-${connectionID}`);
 
     connection.on("data", onConnectionData);
     connection.on("close", onConnectionClose);
