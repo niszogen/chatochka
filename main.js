@@ -1,5 +1,6 @@
-import { Peer } from 'peerjs';
 import './style.css';
+import { Peer } from 'peerjs';
+
 
 // helper functions
 function randomID() {
