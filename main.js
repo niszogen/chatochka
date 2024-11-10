@@ -1,5 +1,5 @@
-import { Peer } from 'peerjs'
-import './style.css'
+import { Peer } from 'peerjs';
+import './style.css';
 
 // helper functions
 function randomID() {
@@ -21,6 +21,7 @@ function createMessage(text, type = "message") {
     element.innerText = text;
 
     log.appendChild(element);
+    element.scrollIntoView();
 }
 
 // variables
